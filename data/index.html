@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Võ Thanh Hải_2022605934</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="card">
+    <div class="logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+        <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+        <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+        <circle cx="12" cy="20" r="1" fill="currentColor"/>
+      </svg>
+    </div>
+
+    <h1>ESP32 WiFi Connect</h1>
+    <p class="subtitle">Select your WiFi network and enter the password</p>
+
+    <div id="status-bar" class="status-bar hidden"></div>
+
+    <form id="wifi-form">
+
+      <!-- SELECT WIFI -->
+      <div class="input-group">
+        <div class="label-row">
+          <label for="ssid-select">WiFi Network</label>
+          <button type="button" id="scan-btn" class="btn-scan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 4 23 10 17 10"/>
+              <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+            </svg>
+            <span id="scan-text">Scan</span>
+          </button>
+        </div>
+
+        <div class="select-wrap">
+          <select id="ssid-select" disabled>
+            <option value="">-- Press Scan to find networks --</option>
+          </select>
+          <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+
+        <div id="network-info" class="network-info hidden">
+          <span id="signal-icon"></span>
+          <span id="network-detail"></span>
+        </div>
+      </div>
+
+      <!-- PASSWORD -->
+      <div class="input-group">
+        <label for="pass">Password</label>
+        <div class="pass-wrap">
+          <input type="password" id="pass" placeholder="Enter WiFi password..." autocomplete="off" />
+          <button type="button" id="toggle-pass" title="Show/Hide password">
+            <svg id="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+        </div>
+        <p id="open-note" class="open-note hidden">Open network — no password required</p>
+      </div>
+
+      <button type="submit" id="save-btn" class="btn-primary" disabled>
+        <span id="btn-text">Save & Connect</span>
+        <span id="btn-spinner" class="spinner hidden"></span>
+      </button>
+    </form>
+
+    <div class="divider"></div>
+
+    <div id="current-info" class="info-box hidden">
+      <p class="info-label">Currently Connected</p>
+      <p id="current-ssid" class="info-value"></p>
+    </div>
+
+    <button id="check-btn" class="btn-secondary">Check Connection Status</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
